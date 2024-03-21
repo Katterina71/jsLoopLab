@@ -37,45 +37,35 @@ for ( let n = 50; n < 60; n++) {
 
   // Part 3 Feeling Loopy
 
-  console.log('Part 3');
+console.log('Part 3 Feeling Loopy');
 
-  const CSV = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctors Assistant,26";
-  let cell = "";
-  let row = "";
-  let n=0; 
-  let rowTable ="";
-  
- 
+const CSV = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctors Assistant,26,";
+let cell = "";
+let rowTable = "";
 
-  for (const i in CSV) {
-      
-      if (CSV[i] == "\n") {
-          row = row + ".";
-          n++;
-          continue;
-      }
-      row = row + CSV[i];
-      
-  }
+for (let i=0; i <CSV.length; i++) {
 
-  for (const i in row) {
+   if (CSV[i] !== ",") {
+      cell = cell + CSV[i];
+   } 
+
+    if (CSV[i] === ",") {
+        rowTable = rowTable + cell + " ";
+        cell= "";
       
-      if (row[i] == "," || row[i] == "." ) {
-          rowTable = rowTable + cell + " ";
-            if (row[i] == ".") {
-              console.log(rowTable);
-              rowTable="";
-            }
-          cell= "";
-          continue;
-      }
-      if (i == row.length-1) {
-        console.log(rowTable);
-        rowTable="";
-        break;
-      }
-      cell = cell + row[i];
-  }
-  
- 
+    }
+
+    if (CSV[i] === "\n") {
+      rowTable = rowTable + cell;
+      console.log(rowTable);
+      rowTable="";
+      cell= ""; 
+    }
+
+  if (i === CSV.length-1 ) {
+    rowTable = rowTable + cell;
+     console.log(rowTable);
+  }  
+
+}
 
